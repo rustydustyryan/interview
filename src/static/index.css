@@ -65,3 +65,22 @@ main {
 main h2 {
   font-size: 1.8rem;
 }
+
+#product-container {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  background: #fff;
+  height: 550px;
+  box-sizing: border-box;
+  transition: box-shadow .2s;
+  border-radius: 8px;
+}

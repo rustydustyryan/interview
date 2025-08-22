@@ -5,9 +5,6 @@ async function setup() {
 	// API Endpoint: GET /products
 	// Returns: Array of product objects with id, title, price (in cents), and array of images
 	// TODO: Fetch products from the API
-	// fetch("http://localhost:3000/products")
-	// 	.then(response => response.json())
-	// 	.catch(error => console.error(error))
 	// TODO: Render the products to the page in a responsive grid
 	// TODO: Sort the products by price (low to high by default)
 	// TODO: Implement search functionality
@@ -34,20 +31,46 @@ async function setup() {
  * @param {string} sortOrder - Either "asc" for ascending or "desc" for descending sort order.
  * @returns {Array} - A new array of products sorted by price in the specified order.
  */
-function messyFunction(data1, data2) {
-	let t = [];
-	for (let i = 0; i < data1.length; i++) {
-		t.push(data1[i]);
-	}
-	for (let i = 0; i < t.length; i++) {
-		for (let j = i + 1; j < t.length; j++) {
-			if ((data2 === "asc" && t[i].price > t[j].price) || (data2 === "desc" && t[i].price < t[j].price)) {
-				let tmp = t[i];
-				t[i] = t[j];
-				t[j] = tmp;
-			}
-		}
-	}
-	return t;
-}
+// function messyFunction(data1, data2) {
+// 	let t = [];
+// 	for (let i = 0; i < data1.length; i++) {
+// 		t.push(data1[i]);
+// 	}
+// 	for (let i = 0; i < t.length; i++) {
+// 		for (let j = i + 1; j < t.length; j++) {
+// 			if ((data2 === "asc" && t[i].price > t[j].price) || (data2 === "desc" && t[i].price < t[j].price)) {
+// 				let tmp = t[i];
+// 				t[i] = t[j];
+// 				t[j] = tmp;
+// 			}
+// 		}
+// 	}
+// 	return t;
+// }
 
+// Fetch products from API endpoint
+fetch("http://localhost:3000/products") // API endpoint
+  .then(response => response.json())
+  .then(data => {
+    products = data;
+
+    // Render products initially
+    renderProducts(products);
+  })
+  .catch(error => console.error("Error fetching products:", error));
+
+  function renderProducts(productsToRender) {
+  const container = document.getElementById("product-container");
+
+  productsToRender.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+
+    card.innerHTML = `
+      <img src="${p.images[0].src}" alt="${p.title}" />
+      <h3>${p.title}</h3>
+      <p>$${p.price}</p>
+    `;
+    container.appendChild(card);
+  });
+}
