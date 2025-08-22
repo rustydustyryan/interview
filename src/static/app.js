@@ -48,11 +48,16 @@ async function setup() {
 // 	return t;
 // }
 
+let products = []; // holds the API data
+
 // Fetch products from API endpoint
 fetch("http://localhost:3000/products") // API endpoint
   .then(response => response.json())
   .then(data => {
     products = data;
+
+    // Sort products by price (low -> high)
+    products.sort((a, b) => a.price - b.price);
 
     // Render products initially
     renderProducts(products);
@@ -61,16 +66,33 @@ fetch("http://localhost:3000/products") // API endpoint
 
   function renderProducts(productsToRender) {
   const container = document.getElementById("product-container");
+  container.innerHTML = ""; // clear existing content
 
   productsToRender.forEach(p => {
     const card = document.createElement("div");
     card.className = "product-card";
 
+    // Convert cents to dollars
+    const formattedPrice = (p.price / 100).toFixed(2);
+
     card.innerHTML = `
       <img src="${p.images[0].src}" alt="${p.title}" />
       <h3>${p.title}</h3>
-      <p>$${p.price}</p>
+      <p>$${formattedPrice}</p>
     `;
     container.appendChild(card);
+  });
+}
+
+function searchInput() {
+  const searchValue = document.getElementById("search-input").value.toLowerCase();
+  const filteredProducts = document.querySelectorAll(".product-card");
+  filteredProducts.forEach(product => {
+    const productName = product.querySelector("h3").textContent.toLowerCase();
+    if (productName.includes(searchValue)) {
+      product.style.display = "block"; // Show matching products
+    } else {
+      product.style.display = "none"; // Hide non-matching products
+    }
   });
 }

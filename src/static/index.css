@@ -84,3 +84,24 @@ main h2 {
   transition: box-shadow .2s;
   border-radius: 8px;
 }
+
+.product-card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.product-card img {
+  flex-shrink: 0;
+  height: 80%;
+  width: 100%;
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0 0;
+}
+
+.product-card p {
+  font-size: 1.2rem;
+  margin: 0;
+}
