@@ -96,3 +96,14 @@ function searchInput() {
     }
   });
 }
+
+// Sort products by price (high -> low) if checkbox is checked
+function sortProducts() {
+	const sortCheckbox = document.getElementById("sort-checkbox");
+	if (sortCheckbox.checked) {
+		products.sort((a, b) => b.price - a.price); // Sort high to low
+	} else {
+		products.sort((a, b) => a.price - b.price); // Sort low to high
+	}
+	renderProducts(products);
+}
