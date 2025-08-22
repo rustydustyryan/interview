@@ -5,6 +5,9 @@ async function setup() {
 	// API Endpoint: GET /products
 	// Returns: Array of product objects with id, title, price (in cents), and array of images
 	// TODO: Fetch products from the API
+	// fetch("http://localhost:3000/products")
+	// 	.then(response => response.json())
+	// 	.catch(error => console.error(error))
 	// TODO: Render the products to the page in a responsive grid
 	// TODO: Sort the products by price (low to high by default)
 	// TODO: Implement search functionality
@@ -47,3 +50,4 @@ function messyFunction(data1, data2) {
 	}
 	return t;
 }
+

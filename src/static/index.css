@@ -1,0 +1,67 @@
+:root {
+  --blue: #4fb6ff;
+  --light-grey: #e2e2e0;
+  --light: #ffffff;
+  --dark: #000;
+}
+
+body {
+  font-family: 'Mina', serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light);
+  color: var(--text-color);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  /* object-fit: cover; */
+  display: block;
+}
+
+header {
+  background-color: var(--blue);
+  color: var(--dark);
+  padding: .5rem 1rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header h1:hover {
+  cursor: pointer;
+}
+
+header i {
+  font-size: 1.8rem;
+  color: var(--dark);
+}
+
+header i:hover {
+  cursor: pointer;
+}
+
+main {
+  padding: 1rem;
+}
+
+#search-input {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: .8rem .5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--dark);
+  border-radius: .25rem;
+}
+
+main h2 {
+  font-size: 1.8rem;
+}
